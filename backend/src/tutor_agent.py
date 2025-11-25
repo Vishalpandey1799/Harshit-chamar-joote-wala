@@ -25,7 +25,7 @@ logging.basicConfig(level=logging.INFO)
 
 load_dotenv(".env")
 
-# INTERNAL MEMORY STATE
+ 
 agent_state = {
     "mode": "select",
     "current_concept_id": None,
@@ -33,9 +33,7 @@ agent_state = {
 }
 
 
-# -------------------------------------------------------------------
-# SYSTEM PROMPT BUILDER
-# -------------------------------------------------------------------
+ 
 def build_system_prompt(mode: str, concept_id: str | None) -> str:
     print(f">>> [PROMPT] building mode={mode}, concept_id={concept_id}")
 
@@ -67,10 +65,7 @@ Then call switch_mode(new_mode, concept_id).
 
     return "Unknown mode."
 
-
-# -------------------------------------------------------------------
-# MAIN AGENT
-# -------------------------------------------------------------------
+ 
 class TutorAgent(Agent):
     def __init__(self, mode="select", concept_id=None, tts=None):
         print(f">>> [AGENT INIT] mode={mode}, concept_id={concept_id}, tts_override={tts is not None}")
@@ -79,9 +74,7 @@ class TutorAgent(Agent):
         self.custom_tts = tts
         super().__init__(instructions=build_system_prompt(mode, concept_id))
 
-    # -------------------------------------------------------------------
-    # TOOL: switch_mode
-    # -------------------------------------------------------------------
+   
     @function_tool
     async def switch_mode(self, ctx: RunContext, new_mode: str, concept_id: str) -> str:
         print(f"\n>>> [MODE SWITCH] new_mode={new_mode}, concept_id={concept_id}")
@@ -114,8 +107,7 @@ class TutorAgent(Agent):
             tokenizer=tokenize.basic.SentenceTokenizer(min_sentence_len=2),
             text_pacing=True,
         )
-
-        # Update session TTS directly via internal attribute
+ 
         print(f">>> [SESSION] Replacing TTS with voice={voice}")
         try:
             ctx.session._tts = new_tts
@@ -123,7 +115,7 @@ class TutorAgent(Agent):
         except Exception as e:
             print(f">>> [TTS ERROR] Failed to set TTS: {e}")
 
-        # rebuild agent with new mode (TTS already updated above)
+   
         try:
             ctx.session.update_agent(
                 TutorAgent(
@@ -153,8 +145,7 @@ async def entrypoint(ctx: JobContext):
     print(f">>> [BOOT] using starting voice={initial_voice}")
 
     vad = ctx.proc.userdata["vad"]
-
-    # AgentSession is created WITHOUT using a fixed TTS (we override inside agent)
+ 
     session = AgentSession(
         stt=deepgram.STT(model="nova-3"),
         llm=google.LLM(model="gemini-2.5-flash"),
