@@ -71,6 +71,9 @@ export const SessionView = ({
 
   const messages = useChatMessages();
   const [chatOpen, setChatOpen] = useState(false);
+  const [tutorMode, setTutorMode] = useState<string>('select');
+  const [tutorConcept, setTutorConcept] = useState<string>('');
+  const [tutorVoice, setTutorVoice] = useState<string>('matthew');
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   const controls: ControlBarControls = {
@@ -81,6 +84,39 @@ export const SessionView = ({
     screenShare: appConfig.supportsVideoInput,
   };
 
+  // Parse messages to detect tutor mode changes
+  useEffect(() => {
+    const lastMessage = messages.at(-1);
+    if (lastMessage?.content) {
+      const content = lastMessage.content.toLowerCase();
+      
+      // Detect mode switches - more aggressive matching
+      if (content.includes('learn') && !content.includes('learning')) {
+        setTutorMode('learn');
+      }
+      if (content.includes('quiz')) {
+        setTutorMode('quiz');
+      }
+      if (content.includes('teach') || content.includes('explain')) {
+        setTutorMode('teach_back');
+      }
+      
+      // Detect voice switches
+      if (content.includes('matthew')) setTutorVoice('matthew');
+      if (content.includes('alicia')) setTutorVoice('alicia');
+      if (content.includes('ken')) setTutorVoice('ken');
+      
+      // Detect concept mentions - case insensitive
+      const concepts = ['variables', 'loops', 'functions', 'arrays', 'conditionals'];
+      for (const concept of concepts) {
+        if (content.includes(concept)) {
+          setTutorConcept(concept);
+          break;
+        }
+      }
+    }
+  }, [messages]);
+
   useEffect(() => {
     const lastMessage = messages.at(-1);
     const lastMessageIsLocal = lastMessage?.from?.isLocal === true;
@@ -90,13 +126,88 @@ export const SessionView = ({
     }
   }, [messages]);
 
+  const getModeColor = (mode: string) => {
+    switch (mode) {
+      case 'learn':
+        return 'bg-blue-500/20 border-blue-500';
+      case 'quiz':
+        return 'bg-amber-500/20 border-amber-500';
+      case 'teach_back':
+        return 'bg-green-500/20 border-green-500';
+      default:
+        return 'bg-purple-500/20 border-purple-500';
+    }
+  };
+
+  const getModeEmoji = (mode: string) => {
+    switch (mode) {
+      case 'learn':
+        return '📖';
+      case 'quiz':
+        return '❓';
+      case 'teach_back':
+        return '💬';
+      default:
+        return '🎯';
+    }
+  };
+
+  const getVoiceEmoji = (voice: string) => {
+    if (voice.includes('alicia')) return '👩‍💼';
+    if (voice.includes('ken')) return '👨‍💻';
+    return '👨‍🏫';
+  };
+
+  const getVoiceName = (voice: string) => {
+    if (voice.includes('alicia')) return 'Alicia';
+    if (voice.includes('ken')) return 'Ken';
+    return 'Matthew';
+  };
+
   return (
     <section className="bg-background relative z-10 h-full w-full overflow-hidden" {...props}>
-      {/* Chat Transcript */}
+      {/* Tutor Status Bar */}
+      {tutorMode !== 'select' && (
+        <div className="fixed top-0 left-0 right-0 z-40 bg-linear-to-r from-slate-900/95 to-blue-900/95 border-b border-blue-500/30 backdrop-blur-sm">
+          <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4 flex-wrap">
+              {/* Mode Badge */}
+              <div className={`px-3 py-1 rounded-full border ${getModeColor(tutorMode)} flex items-center gap-2`}>
+                <span className="text-lg">{getModeEmoji(tutorMode)}</span>
+                <span className="text-white font-semibold text-sm capitalize">
+                  {tutorMode === 'teach_back' ? 'Teach Back' : tutorMode}
+                </span>
+              </div>
+
+              {/* Concept Badge */}
+              {tutorConcept && (
+                <div className="px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-500 text-white font-semibold text-sm capitalize">
+                  📚 {tutorConcept}
+                </div>
+              )}
+
+              {/* Voice Badge */}
+              <div className="px-3 py-1 rounded-full bg-pink-500/20 border border-pink-500 text-white font-semibold text-sm flex items-center gap-1">
+                <span>{getVoiceEmoji(tutorVoice)}</span>
+                <span>{getVoiceName(tutorVoice)}</span>
+              </div>
+            </div>
+
+            {/* Status Indicator */}
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span className="text-xs text-slate-300">Active</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Chat Transcript - with offset for status bar */}
       <div
         className={cn(
           'fixed inset-0 grid grid-cols-1 grid-rows-1',
-          !chatOpen && 'pointer-events-none'
+          !chatOpen && 'pointer-events-none',
+          tutorMode !== 'select' && 'top-16'
         )}
       >
         <Fade top className="absolute inset-x-4 top-0 h-40" />

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "variables",
+    "title": "Variables",
+    "summary": "Variables are containers that store values so you can reuse them later. Instead of writing the same number or text multiple times, you store it in a variable and reference it by name. This makes your code cleaner, easier to update, and less error-prone.",
+    "sample_question": "What is a variable and why is it useful?"
+  },
+  {
+    "id": "loops",
+    "title": "Loops",
+    "summary": "Loops let you repeat an action multiple times without rewriting the same code. There are different types: for loops repeat a specific number of times, while loops repeat until a condition is false, and foreach loops iterate over collections. Loops save time and reduce code duplication.",
+    "sample_question": "Explain the difference between a for loop and a while loop, and give an example of when you'd use each."
+  },
+  {
+    "id": "functions",
+    "title": "Functions",
+    "summary": "Functions are reusable blocks of code that perform a specific task. You define a function once and then call it many times with different inputs. Functions help organize code, prevent repetition, make debugging easier, and improve readability. They can take parameters (inputs) and return values (outputs).",
+    "sample_question": "What is a function and why would you use one instead of just writing all the code inline?"
+  },
+  {
+    "id": "arrays",
+    "title": "Arrays",
+    "summary": "Arrays are ordered collections that store multiple values of the same type in a single variable. Instead of creating ten separate variables for ten numbers, you create one array and access elements by their index position. Arrays are fundamental for handling groups of data efficiently.",
+    "sample_question": "Explain what an array is and how you access elements within it."
+  },
+  {
+    "id": "conditionals",
+    "title": "Conditionals",
+    "summary": "Conditionals (if, else if, else) let your code make decisions based on conditions. If a condition is true, one block executes; if it's false, another block executes. This allows programs to behave differently depending on user input, data values, or other factors.",
+    "sample_question": "What are conditionals and how do they help programs respond to different situations?"
+  }
+]

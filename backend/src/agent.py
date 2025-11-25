@@ -103,7 +103,7 @@ async def entrypoint(ctx: JobContext):
             ),
         # Your existing Murf config
         tts=murf.TTS(
-                voice="en-US-matthew", 
+                voice="en-US-alicia", 
                 style="Conversation",
                 tokenizer=tokenize.basic.SentenceTokenizer(min_sentence_len=2),
                 text_pacing=True

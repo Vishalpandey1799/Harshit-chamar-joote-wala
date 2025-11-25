@@ -20,9 +20,9 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'Wellness Companion',
-  pageTitle: 'Health & Wellness Voice Companion',
-  pageDescription: 'Daily wellness check-ins via voice AI',
+  companyName: 'Teach-the-Tutor',
+  pageTitle: 'Active Recall Learning Coach',
+  pageDescription: 'Master programming concepts through interactive learning modes',
 
   supportsChatInput: true,
   supportsVideoInput: true,
@@ -30,10 +30,10 @@ export const APP_CONFIG_DEFAULTS: AppConfig = {
   isPreConnectBufferEnabled: true,
 
   logo: '/lk-logo.svg',
-  accent: '#dc2626',
+  accent: '#3b82f6',
   logoDark: '/lk-logo-dark.svg',
-  accentDark: '#ef4444',
-  startButtonText: 'Start Check-in',
+  accentDark: '#60a5fa',
+  startButtonText: 'Start Learning',
 
   // for LiveKit Cloud Sandbox
   sandboxId: undefined,
