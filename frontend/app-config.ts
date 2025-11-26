@@ -2,6 +2,7 @@ export interface AppConfig {
   pageTitle: string;
   pageDescription: string;
   companyName: string;
+  day?: number; // Which day's agent to run
 
   supportsChatInput: boolean;
   supportsVideoInput: boolean;
@@ -20,9 +21,10 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'Teach-the-Tutor',
-  pageTitle: 'Active Recall Learning Coach',
-  pageDescription: 'Master programming concepts through interactive learning modes',
+  companyName: 'Razorpay SDR',
+  pageTitle: 'Sales Development Representative',
+  pageDescription: 'Razorpay - Accept Payments, Grow Your Business',
+  day: 5,
 
   supportsChatInput: true,
   supportsVideoInput: true,
@@ -30,10 +32,10 @@ export const APP_CONFIG_DEFAULTS: AppConfig = {
   isPreConnectBufferEnabled: true,
 
   logo: '/lk-logo.svg',
-  accent: '#3b82f6',
+  accent: '#1f2937',
   logoDark: '/lk-logo-dark.svg',
-  accentDark: '#60a5fa',
-  startButtonText: 'Start Learning',
+  accentDark: '#4b5563',
+  startButtonText: 'Start Sales Call',
 
   // for LiveKit Cloud Sandbox
   sandboxId: undefined,
