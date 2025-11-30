@@ -1,0 +1,175 @@
+[
+  {
+    "id": "tee-men-001",
+    "name": "HRX by Hrithik Roshan Cotton Active T-Shirt",
+    "price": 599,
+    "currency": "INR",
+    "category": "tshirt",
+    "gender": "men",
+    "color": "black",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "material": "100% Cotton",
+    "description": "Moisture-wicking soft cotton tee for everyday comfort and workouts.",
+    "stock": 2
+  },
+  {
+    "id": "tee-women-001",
+    "name": "Roadster Women Oversized Graphic Tee",
+    "price": 699,
+    "currency": "INR",
+    "category": "tshirt",
+    "gender": "women",
+    "color": "white",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "material": "Cotton Lycra",
+    "description": "Relaxed fit oversized tee with premium fabric and bold print.",
+    "stock": 27
+  },
+  {
+    "id": "hood-men-001",
+    "name": "H&M Men Classic Black Hoodie",
+    "price": 1499,
+    "currency": "INR",
+    "category": "hoodie",
+    "gender": "men",
+    "color": "black",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "material": "Cotton Blend",
+    "description": "Soft brushed hoodie with kangaroo pocket and ribbed hem.",
+    "stock": 18
+  },
+  {
+    "id": "hood-women-002",
+    "name": "Roadster Women Grey Fleece Hoodie",
+    "price": 1299,
+    "currency": "INR",
+    "category": "hoodie",
+    "gender": "women",
+    "color": "grey",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "material": "Fleece",
+    "description": "Warm lightweight fleece hoodie designed for daily wear.",
+    "stock": 16
+  },
+  {
+    "id": "jeans-men-001",
+    "name": "Levis Men Slim Fit Blue Jeans",
+    "price": 2499,
+    "currency": "INR",
+    "category": "jeans",
+    "gender": "men",
+    "color": "blue",
+    "sizes": [
+      "30",
+      "32",
+      "34",
+      "36"
+    ],
+    "material": "Denim",
+    "description": "Slim fit mid-rise jeans with stretch denim for all-day comfort.",
+    "stock": 30
+  },
+  {
+    "id": "jeans-women-001",
+    "name": "Anouk Women High-Rise Straight Jeans",
+    "price": 1899,
+    "currency": "INR",
+    "category": "jeans",
+    "gender": "women",
+    "color": "light blue",
+    "sizes": [
+      "26",
+      "28",
+      "30",
+      "32"
+    ],
+    "material": "Denim",
+    "description": "High-rise straight fit jeans with smooth stretch fabric.",
+    "stock": 22
+  },
+  {
+    "id": "shoes-men-001",
+    "name": "Puma Unisex Running Shoes",
+    "price": 2799,
+    "currency": "INR",
+    "category": "shoes",
+    "gender": "unisex",
+    "color": "black",
+    "sizes": [
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "material": "Mesh",
+    "description": "Lightweight breathable running shoes with soft cushioning.",
+    "stock": 18
+  },
+  {
+    "id": "shoes-women-002",
+    "name": "Nike Women Revolution 6 Running Shoes",
+    "price": 3899,
+    "currency": "INR",
+    "category": "shoes",
+    "gender": "women",
+    "color": "pink",
+    "sizes": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "material": "Mesh",
+    "description": "Comfortable daily trainers with responsive cushioning.",
+    "stock": 12
+  },
+  {
+    "id": "bag-women-001",
+    "name": "DressBerry Women Casual Tote Bag",
+    "price": 1299,
+    "currency": "INR",
+    "category": "bags",
+    "gender": "women",
+    "color": "tan",
+    "sizes": [
+      "Standard"
+    ],
+    "material": "PU Leather",
+    "description": "Spacious and stylish tote bag perfect for everyday use.",
+    "stock": 44
+  },
+  {
+    "id": "watch-men-001",
+    "name": "Fossil Men Chronograph Watch",
+    "price": 5999,
+    "currency": "INR",
+    "category": "watches",
+    "gender": "men",
+    "color": "brown",
+    "sizes": [
+      "Standard"
+    ],
+    "material": "Leather Strap",
+    "description": "Classic chronograph with premium leather strap and stainless steel case.",
+    "stock": 9
+  }
+]
